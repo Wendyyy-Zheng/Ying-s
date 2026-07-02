@@ -13,9 +13,9 @@
             --text-primary: #2c2c2c;
             --text-secondary: #5a5a5a;
             --text-muted: #8a8a8a;
-            --color-male: #9dbcd4;
+            --color-male: #c8adb0;
             --color-female: #d4a5a5;
-            --color-male-dark: #6b8fa3;
+            --color-male-dark: #9a7c80;
             --color-female-dark: #b07a7a;
             --accent: #8b6914;
             --border: #e0d5c5;
@@ -783,7 +783,7 @@
                     name: '男性',
                     type: 'bar',
                     data: [1469, 1319],
-                    itemStyle: { color: '#9dbcd4' },
+                    itemStyle: { color: '#c8adb0' },
                     barWidth: '30%',
                     label: { show: true, position: 'top', fontFamily: 'Noto Sans SC', fontSize: 14, fontWeight: 'bold' }
                 },
@@ -807,7 +807,7 @@
         }));
         const lateScatter = lateData.map(d => ({
             value: [d.male, d.active, d.female, d.book],
-            itemStyle: { color: '#9dbcd4', opacity: 0.75 }
+            itemStyle: { color: '#c8adb0', opacity: 0.75 }
         }));
 
         // Calculate trend lines
@@ -905,7 +905,7 @@
                     data: lateTrend,
                     smooth: false,
                     symbol: 'none',
-                    lineStyle: { color: '#9dbcd4', width: 3, type: 'solid' }
+                    lineStyle: { color: '#c8adb0', width: 3, type: 'solid' }
                 }
             ]
         });
