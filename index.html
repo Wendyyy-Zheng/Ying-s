@@ -803,11 +803,11 @@
         
         const earlyScatter = earlyData.map(d => ({
             value: [d.male, d.active, d.female, d.book],
-            itemStyle: { color: '#d4a5a5', opacity: 0.75 }
+            itemStyle: { color: '#9dbcd4', opacity: 0.75 }
         }));
         const lateScatter = lateData.map(d => ({
             value: [d.male, d.active, d.female, d.book],
-            itemStyle: { color: '#9dbcd4', opacity: 0.75 }
+            itemStyle: { color: '#d4a5a5', opacity: 0.75 }
         }));
 
         // Calculate trend lines
@@ -861,7 +861,8 @@
                 nameLocation: 'middle',
                 nameGap: 35,
                 min: 0,
-                max: 2200,
+                max: 2000,
+                interval: 200,
                 axisLabel: { fontFamily: 'Noto Sans SC' }
             },
             yAxis: {
@@ -869,7 +870,8 @@
                 name: '女性主动语态占比（%）',
                 nameTextStyle: { fontFamily: 'Noto Sans SC', padding: [0, 0, 0, 30] },
                 min: 0,
-                max: 65,
+                max: 60,
+                interval: 10,
                 axisLabel: { formatter: '{value}%', fontFamily: 'Noto Sans SC' }
             },
             series: [
@@ -894,14 +896,14 @@
                     data: earlyTrend,
                     smooth: false,
                     symbol: 'none',
-                    lineStyle: { color: '#d4a5a5', width: 3, type: 'solid' }
+                    lineStyle: { color: '#9dbcd4', width: 3, type: 'solid' }
                 },
                 {
                     type: 'line',
                     data: lateTrend,
                     smooth: false,
                     symbol: 'none',
-                    lineStyle: { color: '#9dbcd4', width: 3, type: 'solid' }
+                    lineStyle: { color: '#d4a5a5', width: 3, type: 'solid' }
                 }
             ]
         });
