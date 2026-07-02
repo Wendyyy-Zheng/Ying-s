@@ -14,9 +14,9 @@
             --text-secondary: #5a5a5a;
             --text-muted: #8a8a8a;
             --color-male: #9dbcd4;
-            --color-female: #e8caca;
+            --color-female: #d4a5a5;
             --color-male-dark: #6b8fa3;
-            --color-female-dark: #c99a9a;
+            --color-female-dark: #b07a7a;
             --accent: #8b6914;
             --border: #e0d5c5;
         }
@@ -791,7 +791,7 @@
                     name: '女性',
                     type: 'bar',
                     data: [882, 789],
-                    itemStyle: { color: '#e8caca' },
+                    itemStyle: { color: '#d4a5a5' },
                     barWidth: '30%',
                     label: { show: true, position: 'top', fontFamily: 'Noto Sans SC', fontSize: 14, fontWeight: 'bold' }
                 }
@@ -803,11 +803,11 @@
         
         const earlyScatter = earlyData.map(d => ({
             value: [d.male, d.active, d.female, d.book],
-            itemStyle: { color: '#9dbcd4', opacity: 0.75 }
+            itemStyle: { color: '#d4a5a5', opacity: 0.75 }
         }));
         const lateScatter = lateData.map(d => ({
             value: [d.male, d.active, d.female, d.book],
-            itemStyle: { color: '#e8caca', opacity: 0.75 }
+            itemStyle: { color: '#9dbcd4', opacity: 0.75 }
         }));
 
         // Calculate trend lines
@@ -861,8 +861,7 @@
                 nameLocation: 'middle',
                 nameGap: 35,
                 min: 0,
-                max: 2000,
-                interval: 200,
+                max: 2200,
                 axisLabel: { fontFamily: 'Noto Sans SC' }
             },
             yAxis: {
@@ -870,8 +869,7 @@
                 name: '女性主动语态占比（%）',
                 nameTextStyle: { fontFamily: 'Noto Sans SC', padding: [0, 0, 0, 30] },
                 min: 0,
-                max: 60,
-                interval: 10,
+                max: 65,
                 axisLabel: { formatter: '{value}%', fontFamily: 'Noto Sans SC' }
             },
             series: [
@@ -896,14 +894,14 @@
                     data: earlyTrend,
                     smooth: false,
                     symbol: 'none',
-                    lineStyle: { color: '#9dbcd4', width: 3, type: 'solid' }
+                    lineStyle: { color: '#d4a5a5', width: 3, type: 'solid' }
                 },
                 {
                     type: 'line',
                     data: lateTrend,
                     smooth: false,
                     symbol: 'none',
-                    lineStyle: { color: '#e8caca', width: 3, type: 'solid' }
+                    lineStyle: { color: '#9dbcd4', width: 3, type: 'solid' }
                 }
             ]
         });
