@@ -261,6 +261,104 @@
             line-height: 1.5;
         }
 
+        /* Concept Definition */
+        .concept-section {
+            padding: 4rem 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .concept-section h2 {
+            font-size: 1.6rem;
+            margin-bottom: 2rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .concept-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 2px;
+            background: var(--color-female);
+        }
+
+        .concept-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            text-align: left;
+        }
+
+        .concept-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.8rem;
+            border: 1px solid var(--border);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.03);
+            position: relative;
+            border-left: 4px solid var(--color-male);
+        }
+
+        .concept-card.female {
+            border-left-color: var(--color-female);
+        }
+
+        .concept-number {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+
+        .concept-title {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .concept-title span {
+            font-weight: 400;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-left: 0.5rem;
+        }
+
+        .concept-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .concept-list li {
+            padding: 0.5rem 0 0.5rem 1.2rem;
+            position: relative;
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .concept-list li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--color-female-dark);
+            font-weight: bold;
+            font-size: 1.2rem;
+            line-height: 1.4;
+        }
+
+        @media (max-width: 640px) {
+            .concept-grid { grid-template-columns: 1fr; }
+        }
+
         /* Quote Block */
         .quote-block {
             background: var(--bg-secondary);
@@ -437,6 +535,35 @@
         <div class="scroll-indicator">
             <span>向下滚动</span>
             <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- Concept Definition -->
+    <section class="concept-section fade-in">
+        <h2 class="serif">核心概念界定</h2>
+        <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto; line-height: 1.9;">
+            在进入数据之前，我们需要先明确两个关键词的含义——
+            "失声"不是无声，"觉醒"也不是一场整齐划一的运动。
+        </p>
+        <div class="concept-grid">
+            <div class="concept-card">
+                <div class="concept-number">01</div>
+                <div class="concept-title">"失声" <span>Silencing</span></div>
+                <ul class="concept-list">
+                    <li>并非"无台词"，而是一种<strong>结构性的弱势地位</strong></li>
+                    <li>女性角色依附于男性主导的叙事框架，话语被边缘化</li>
+                    <li>包括<strong>量的匮乏</strong>（台词数量差距）与<strong>质的从属</strong>（被动语态、回应性话语）</li>
+                </ul>
+            </div>
+            <div class="concept-card female">
+                <div class="concept-number">02</div>
+                <div class="concept-title">碎片化"觉醒" <span>Fragmented Awakening</span></div>
+                <ul class="concept-list">
+                    <li>承认女性主体意识的萌生，但强调其<strong>非整体性</strong></li>
+                    <li>具有<strong>非连续性与零散性</strong>特征，个体突破难以积累为群体变革</li>
+                    <li>是散落在文学史中的光点，而非一条持续上升的曲线</li>
+                </ul>
+            </div>
         </div>
     </section>
 
