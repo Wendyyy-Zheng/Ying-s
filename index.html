@@ -524,47 +524,10 @@
 
     <div class="divider"></div>
 
-    <!-- Section 3: Distribution -->
+    <!-- Section 3: Case Studies -->
     <section class="section fade-in">
         <div class="section-header">
             <div class="section-number">CHAPTER III</div>
-            <h2 class="serif">不变的平均值，离散的世界</h2>
-            <p class="section-intro">
-                如果觉醒是真实的，它在哪里？答案藏在分布之中。
-                两个时代的女性主动语态平均值几乎完全重合——但平均值背后的离散程度讲述了一个不同的故事。
-            </p>
-        </div>
-
-        <div class="chart-container" id="chart-box"></div>
-
-        <div class="narrative">
-            <p>
-                箱线图清晰地展示了这种<span class="data-point">离散化的觉醒</span>。
-                1800-1850年与1850-1900年的中位数、四分位数几乎重叠，
-                女性主动语态的平均占比分别仅为<span class="data-point">43.25%</span>和<span class="data-point">43.32%</span>——
-                半个世纪的跨度，变化微乎其微。
-            </p>
-            <p>
-                然而，数据的两端却闪烁着觉醒的微光。在1800-1850年间，
-                Book_43 和 Book_24 的女性主动语态占比逼近60%；而在1850-1900年，
-                Book_47 与 Book_13 同样达到了相近的高度。这些极端值并非统计学意义上的"异常"，
-                它们是<strong>文学史中真实存在的觉醒时刻</strong>——简·奥斯汀笔下机智的伊丽莎白、
-                夏洛蒂·勃朗特笔下倔强的简·爱，正是这些孤立的坐标点，构成了女性意识在文学长河中最早的涟漪。
-            </p>
-            <p>
-                觉醒的碎片化特征在此暴露无遗：它不是一场逐渐升温的运动，
-                而是一系列<span class="data-point">互不关联的个体突破</span>。一位作者的勇气无法传递给下一位，
-                每一代女性书写的自由都需要重新争取。
-            </p>
-        </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <!-- Section 4: Case Studies -->
-    <section class="section fade-in">
-        <div class="section-header">
-            <div class="section-number">CHAPTER IV</div>
             <h2 class="serif">个案深潜：数据背后的故事</h2>
             <p class="section-intro">
                 让我们从统计学的抽象中抽离，凝视几个具体的数据点。
@@ -887,7 +850,7 @@
                 }
             },
             legend: {
-                data: ['1800-1850年', '1850-1900年', '1800-1850趋势线', '1850-1900趋势线'],
+                data: ['1800-1850年', '1850-1900年'],
                 top: 45,
                 textStyle: { fontFamily: 'Noto Sans SC' }
             },
@@ -927,7 +890,6 @@
                     }
                 },
                 {
-                    name: '1800-1850趋势线',
                     type: 'line',
                     data: earlyTrend,
                     smooth: false,
@@ -935,7 +897,6 @@
                     lineStyle: { color: '#d4a5a5', width: 3, type: 'solid' }
                 },
                 {
-                    name: '1850-1900趋势线',
                     type: 'line',
                     data: lateTrend,
                     smooth: false,
@@ -945,105 +906,10 @@
             ]
         });
 
-        // Chart 3: Boxplot for Female Active Voice Ratio Distribution
-        const chartBox = echarts.init(document.getElementById('chart-box'));
-        
-        function calcQuartiles(arr) {
-            const sorted = [...arr].sort((a, b) => a - b);
-            const q1 = sorted[Math.floor(sorted.length * 0.25)];
-            const median = sorted[Math.floor(sorted.length * 0.5)];
-            const q3 = sorted[Math.floor(sorted.length * 0.75)];
-            const min = sorted[0];
-            const max = sorted[sorted.length - 1];
-            return [min, q1, median, q3, max];
-        }
-
-        const earlyActive = earlyData.map(d => d.active);
-        const lateActive = lateData.map(d => d.active);
-        const earlyBox = calcQuartiles(earlyActive);
-        const lateBox = calcQuartiles(lateActive);
-
-        chartBox.setOption({
-            title: {
-                text: '女性主动语态占比分布：被平均值掩盖的真相',
-                left: 'center',
-                top: 10,
-                textStyle: { fontFamily: 'Noto Serif SC', fontSize: 18, fontWeight: 600 }
-            },
-            tooltip: {
-                trigger: 'item',
-                formatter: function(params) {
-                    if (params.seriesName === '分布') return;
-                    const v = params.value;
-                    return `<div style="font-family:Noto Sans SC">
-                        <strong>${params.name}</strong><br/>
-                        最小值：${v[0].toFixed(1)}%<br/>
-                        下四分位：${v[1].toFixed(1)}%<br/>
-                        中位数：${v[2].toFixed(1)}%<br/>
-                        上四分位：${v[3].toFixed(1)}%<br/>
-                        最大值：${v[4].toFixed(1)}%
-                    </div>`;
-                }
-            },
-            legend: {
-                data: ['1800-1850年', '1850-1900年', '1800-1850分布', '1850-1900分布'],
-                top: 45,
-                textStyle: { fontFamily: 'Noto Sans SC' }
-            },
-            grid: { left: '10%', right: '10%', bottom: '15%', top: '20%', containLabel: true },
-            xAxis: {
-                type: 'category',
-                data: ['1800-1850', '1850-1900'],
-                name: '时代',
-                nameLocation: 'middle',
-                nameGap: 35,
-                axisLabel: { fontFamily: 'Noto Sans SC', fontSize: 13 }
-            },
-            yAxis: {
-                type: 'value',
-                name: '女性主动语态占比（%）',
-                nameTextStyle: { fontFamily: 'Noto Sans SC', padding: [0, 0, 0, 30] },
-                min: 15,
-                max: 65,
-                axisLabel: { formatter: '{value}%', fontFamily: 'Noto Sans SC' }
-            },
-            series: [
-                {
-                    name: '1800-1850年',
-                    type: 'boxplot',
-                    data: [{name: '1800-1850', value: earlyBox}],
-                    itemStyle: { color: '#d4a5a5', borderColor: '#b07a7a', borderWidth: 2 },
-                    boxWidth: [20, 50]
-                },
-                {
-                    name: '1850-1900年',
-                    type: 'boxplot',
-                    data: [{name: '1850-1900', value: lateBox}],
-                    itemStyle: { color: '#9dbcd4', borderColor: '#6b8fa3', borderWidth: 2 },
-                    boxWidth: [20, 50]
-                },
-                {
-                    name: '1800-1850分布',
-                    type: 'scatter',
-                    data: earlyActive.map((v, i) => [0, v]),
-                    itemStyle: { color: '#d4a5a5', opacity: 0.5 },
-                    symbolSize: 8
-                },
-                {
-                    name: '1850-1900分布',
-                    type: 'scatter',
-                    data: lateActive.map((v, i) => [1, v]),
-                    itemStyle: { color: '#9dbcd4', opacity: 0.5 },
-                    symbolSize: 8
-                }
-            ]
-        });
-
         // Responsive
         window.addEventListener('resize', () => {
             chartBar.resize();
             chartScatter.resize();
-            chartBox.resize();
         });
 
         // Scroll animation
